@@ -1,0 +1,68 @@
+<!--
+
+<br>
+
+<router-outlet></router-outlet> -->
+
+<div (swiperight)="openNav()" (swipeleft)="closeNav()">
+
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <button mat-icon-button *ngIf="isHandset" (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+            <!-- <img src="/assets/images/snack-hauz-logo.png" alt="" class="cs-logo"> -->
+            <h4 class="mr-2">Snak Hauz</h4>
+            <span class="menu-spacer"></span>
+
+            <a *ngFor="let link of links" [class]="{'d-none': isHandset}" mat-button [routerLink]="link.url" routerLinkActive="_active" [routerLinkActiveOptions]="{ exact: link.exact }">
+          {{ link.displayName }}
+        </a>
+
+
+            <div class="flex-spacer"></div>
+
+            <!-- <app-theme-picker title="Change Theme"></app-theme-picker> -->
+
+
+            <button mat-button [matMenuTriggerFor]="matThemeMenu">
+                <mat-icon>format_color_fill</mat-icon>
+            </button>
+            <mat-menu #matThemeMenu="matMenu">
+                <button mat-menu-item (click)="toggleDarkMode()">
+                    <mat-icon>{{ is_dark_mode ? 'check_box' : 'check_box_outline_blank' }}</mat-icon>
+                    <span>Dark Mode</span>
+                </button>
+            </mat-menu>
+
+            <a mat-button (click)="signIn()">
+                <mat-icon>perm_identity</mat-icon>
+                Sign In
+            </a>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <mat-sidenav-container>
+        <mat-sidenav *showOnMobile #sidenav [fixedInViewport]="true" [fixedInViewport]="true" [attr.role]="isHandset ? 'dialog' : 'navigation'" [mode]="isHandset ? 'over' : 'side'" [opened]="isHandset == false">
+            <mat-nav-list>
+
+                <a (click)="sidenav.close()"
+                  *ngFor="let link of links"
+                  [routerLink]="link.url"
+                  [routerLinkActiveOptions]="{ exact: link.exact }"
+                  mat-list-item class="menu-list-item" routerLinkActive="_active">
+                    <span>{{ link.displayName }}</span>
+                </a>
+
+            </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <div class="container-fluid mt-4">
+                <router-outlet></router-outlet>
+            </div>
+
+            <!-- <app-footer></app-footer> -->
+
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

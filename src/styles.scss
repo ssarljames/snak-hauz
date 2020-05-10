@@ -1,0 +1,133 @@
+    /* You can add global styles to this file, and also import other style files */
+    /* modal animation */
+
+    @import 'themes/theme.scss';
+
+    body {
+        // background: #ccc;
+        height: unset !important;
+        width: unset !important;
+        overscroll-behavior-y: contain !important;
+    }
+
+    .modal-content {
+        animation-name: example;
+        animation-duration: 0.3s;
+    }
+
+    @keyframes example {
+        0% {
+            transform: scale(0.5)
+        }
+        75% {
+            transform: scale(1.1)
+        }
+        100% {
+            transform: scale(1)
+        }
+    }
+
+    html,
+    body {
+        height: 100%;
+    }
+
+    body {
+        margin: 0;
+        font-family: Roboto, "Helvetica Neue", sans-serif;
+    }
+
+    .full-width {
+        width: 100%;
+    }
+
+    table td {
+        vertical-align: middle;
+    }
+
+    i {
+        vertical-align: middle !important;
+    }
+
+    .mat-menu-panel {
+        padding: 0 10px 0 10px;
+    }
+
+    h1 .fa {
+        margin-top: -4px;
+    }
+
+    .mat-list-item-content .fa {
+        margin-top: -5px;
+        margin-right: 5px;
+        width: 100%;
+    }
+
+    .mat-list-base .mat-list-item .mat-list-item-content,
+    .mat-list-base .mat-list-option .mat-list-item-content {
+        width: 100% !important;
+    }
+
+    .mat-card-header-text {
+        margin: 0 !important;
+    }
+
+    .mat-card {
+        margin: 20px 0;
+        border-radius: 0px !important;
+    }
+
+    table.mat-table {
+        width: 100% !important;
+        display: table;
+    }
+
+    .mat-elevation-z6,
+    mat-toolbar,
+    app-top-nav {
+        box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
+    }
+
+    .mat-drawer-container {
+        min-height: 90vh;
+    }
+
+    mat-toolbar {
+        position: sticky;
+        position: -webkit-sticky;
+        /* For macOS/iOS Safari */
+        top: 0;
+        /* Sets the sticky toolbar to be on top */
+        z-index: 1000;
+        /* Ensure that your app's content doesn't overlap the toolbar */
+    }
+
+    .flex-spacer {
+        -webkit-box-flex: 1;
+        flex-grow: 1 !important;
+    }
+      
+    .hover{
+        cursor: pointer;
+    }
+
+    @import 'app/styles/ckeditor.scss';
+
+    .cs-logo{
+        height: 45px;
+        margin-right: 17px;        
+    }
+
+    .ck-editor__editable_inline {
+        min-height: 200px;
+        color: #333 !important;
+    }
+
+    .align-icon{
+        mat-icon{
+            margin-top: -3px;
+        }
+
+        vertical-align: middle;
+        display: inline-flex;
+    }

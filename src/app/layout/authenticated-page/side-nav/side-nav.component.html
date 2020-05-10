@@ -1,0 +1,10 @@
+
+    
+<ng-container *showOnMobile>
+    <app-profile-box></app-profile-box>
+    <mat-divider class="mb-3 mt-3"></mat-divider>
+</ng-container>
+
+
+
+<app-side-menu-item [sidenav]="sidenav" *ngFor="let item of navItems" [item]="item"></app-side-menu-item>

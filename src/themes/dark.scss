@@ -1,0 +1,15 @@
+$snack-hauz-dark-app-primary: mat-palette($mat-red);
+$snack-hauz-dark-app-accent: mat-palette($mat-amber, A200, A100, A400);
+$snack-hauz-dark-app-warn: mat-palette($mat-red);
+$snack-hauz-dark-app-theme: mat-dark-theme($snack-hauz-dark-app-primary, $snack-hauz-dark-app-accent, $snack-hauz-dark-app-warn);
+@include angular-material-theme($snack-hauz-dark-app-theme);
+
+
+.card-header{
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgb(37, 37, 37);
+}
+    
+
+.mat-ripple:hover{
+    background-color: rgba(255,255, 255,.05);
+}

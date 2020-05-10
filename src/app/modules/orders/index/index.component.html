@@ -1,0 +1,12 @@
+<h1>Orders</h1>
+
+<ul>
+    <li *ngFor="let order of orders">
+        {{ order.order_number }} - {{ order.total_amount | currency: ' ' }}
+        <ul>
+            <li *ngFor="let meal of order.meals">
+                {{ meal.name }} ( {{ meal.pivot.quantity }} x {{ meal.pivot.current_price | currency: ' ' }} = {{ meal.pivot.total_amount | currency: ' '}} )
+            </li>
+        </ul>
+    </li>
+</ul>
