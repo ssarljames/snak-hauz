@@ -1,4 +1,4 @@
 
-## About CS3 Portal
+## Snak Hauz
 
-CS3 Portal the web page of CS3 organiztion
+Web application for HideOut Food Order Queueing...
