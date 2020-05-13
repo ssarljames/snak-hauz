@@ -22,7 +22,6 @@ import { AppComponent } from './app.component';
 import { PageNotFoundComponent } from './layout/errors/page-not-found/page-not-found.component';
 import { AccessDeniedComponent } from './layout/errors/access-denied/access-denied.component';
 import { AuthenticatedPageComponent } from './layout/authenticated-page/authenticated-page.component';
-import { SharedModule } from './modules/shared/shared.module';
 import { AuthenticationInterceptor } from './core/interceptors/authentication/authentication.interceptor';
 import { SideMenuItemComponent } from './layout/authenticated-page/side-nav/side-menu-item/side-menu-item.component';
 import { TopNavbarComponent } from './layout/authenticated-page/top-navbar/top-navbar.component';
@@ -42,6 +41,7 @@ import { environment } from '../environments/environment';
 
 import { AppReducers } from './store/app.reducers';
 import { ProfileBoxComponent } from './layout/authenticated-page/profile-box/profile-box.component';
+import { SharedModule } from './shared/shared.module';
 
 @Injectable()
 export class HammerConfig extends HammerGestureConfig  {
@@ -86,15 +86,12 @@ export class HammerConfig extends HammerGestureConfig  {
       preloadingStrategy: PreloadAllModules
     }),
 
-    SharedModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatIconModule,
-    MatMenuModule,
+
+    SharedModule,
 
 
     NgProgressModule,

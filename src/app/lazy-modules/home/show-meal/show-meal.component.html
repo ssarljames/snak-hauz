@@ -1,0 +1,92 @@
+<div class="container-fluid">
+    <div class="row" *ngIf="meal">
+        <div class="col-md-4 text-center">
+            <img class="meal-image" [src]="meal.image_path_url" alt="">
+            <br><br>
+        </div>
+        <div class="col-md-8">
+            <h1>{{ meal.name }}</h1>
+            <h3>{{ meal.price | currency: 'P ' }}</h3>
+            <mat-divider></mat-divider>
+    
+            <br>
+    
+            <p>{{ meal.description }}</p>
+    
+            <div class="alert alert-warning align-icon" *ngIf="meal.included_to_active_order > 0" >
+                <mat-icon class="mr-2">error</mat-icon>
+                You already have this on your pending order.
+            </div>
+            <br>
+            
+    
+            <div class="row">
+                <div class="col-md-4">
+                    <app-material-select 
+                    [control]="form.controls.quantity"
+                    [options]="allowedOrderQuantities"
+                    label="How many order like?"
+                    required="true"
+                    class="full-width">
+        
+                    </app-material-select>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-lg-6">
+                    <app-material-textarea [control]="form.controls.remarks" label="Remarks" class="full-width"></app-material-textarea>    
+                </div>
+            </div>
+    
+            <br>
+    
+            <h3>{{ meal.addons?.length == 0 ? 'No':'' }} Available Addons</h3>
+    
+            <div 
+                *ngFor="let addon of meal.addons" 
+                [class]="{'addon-block': true, 'added': addon.selected}"
+                (click)="selectAddon(addon)"
+                matRipple>
+    
+                <img [src]="addon.image_path_url" alt="">
+                {{ addon.name }} 
+                
+                <br>
+                <br>
+                <ng-container *ngIf="addon.pivot.add_on_price > 0; else free">
+                    <span class="text-muted">Just add </span>
+                    <span class="price">{{ addon.pivot.add_on_price | currency: 'P ' }}</span>
+                    <br>
+                    <span class="text-muted"> each order</span>
+                </ng-container>
+                <ng-template #free>
+                    It's free!
+                </ng-template>
+    
+            </div>
+    
+            <br><br><br>
+    
+            Total: {{ (meal.price * form.controls.quantity.value) + (addons_price * form.controls.quantity.value)  | currency: 'P '}}
+    
+            <br><br><br>
+    
+    
+            <button 
+                mat-raised-button 
+                color="primary" 
+                (click)="addToCart()" 
+                [disabled]="loading"
+                class="mr-2">
+                <mat-icon>add_shopping_cart</mat-icon> 
+                Add to Cart
+            </button> 
+            <button routerLink="/" mat-raised-button color="basic">
+                <mat-icon>home</mat-icon>
+                 Back to Home
+            </button>
+    
+        </div>
+    </div>
+</div>

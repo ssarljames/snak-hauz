@@ -1,0 +1,30 @@
+.meal-image{
+    max-width: 90%;
+}
+
+.row div {
+    padding: 10px;
+}
+
+.addon-block{
+
+    img{
+        width: 100px;
+        height: 100px;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    border-radius: 10px;
+    display: inline-block;
+    text-align: center;
+    border: 2px transparent solid;
+    margin-right: 3px;
+    cursor: pointer;
+
+}
+
+.added{    
+    background-color: #ffbda5 !important;
+    color: #333;
+}

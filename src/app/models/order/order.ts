@@ -1,5 +1,6 @@
 import { Model } from '../model/model';
 import { Meal } from '../meal/meal';
+import { ComputerStation } from '../computer-station/computer-station';
 
 
 interface MealOrderPivot {
@@ -14,6 +15,8 @@ interface MealOrderPivot {
     created_at: Date;
     is_add_on: boolean;
     main_order_meal_id: number;
+
+    addons: MealOrder[];
 }
 
 class MealOrder extends Meal {
@@ -27,9 +30,13 @@ export class Order extends Model{
     customer_id: number;
     type: string;
     total_amount: number;
-    status: string;
+
+    status: number;
   
     status_label: string;
   
     meals: MealOrder[];
+    main_meals: MealOrder[];
+
+    computer_station: ComputerStation;
 }

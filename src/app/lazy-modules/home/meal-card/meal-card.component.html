@@ -1,0 +1,15 @@
+<mat-card matRipple (click)="view(meal)">
+    <mat-card-content>
+        <div class="meal-image">
+            <img [src]="meal.image_path_url" alt="">
+        </div>
+        <div>
+            <h2 class="mb-0">
+                {{ meal.name }}
+                <span class="text-success" *ngIf="meal.included_to_active_order > 0"><i class="fa fa-check-circle"></i></span>
+            </h2>
+            <small>{{ meal.category.name }}</small> <br>
+            <span class="price">{{ meal.price | currency: 'P ' }}</span>
+        </div>
+    </mat-card-content>
+</mat-card>

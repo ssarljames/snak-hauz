@@ -12,12 +12,22 @@ export class Meal extends Model{
   description: string;
   image_path_url: string;
   inventory_items: InventoryItem[];
-  drinks: Meal[];
   total_ordered: number;
 
   preparation_time: number;
   
-  meal_category: MealCategory;
+  category: MealCategory;
 
   included_to_active_order: number;
+
+
+  addons: MealAddon[];
+}
+
+export class MealAddon extends Meal {
+  pivot: {
+    add_on_price: number
+  }
+
+  selected: boolean;
 }

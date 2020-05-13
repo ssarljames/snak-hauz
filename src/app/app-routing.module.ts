@@ -15,13 +15,13 @@ const routes: Routes = [
     path: '',
     canActivate: [ GuestGuard ],
     component: GuestPageComponent,
-    loadChildren: () => import('./modules/home/home.module').then( m => m.HomeModule)
+    loadChildren: () => import('./lazy-modules/home/home.module').then( m => m.HomeModule)
   },
   {
     path: 'orders',
     canActivate: [ GuestGuard ],
     component: GuestPageComponent,
-    loadChildren: () => import('./modules/orders/orders.module').then( m => m.OrdersModule)
+    loadChildren: () => import('./lazy-modules/orders/orders.module').then( m => m.OrdersModule)
   },
 
   {

@@ -6,6 +6,9 @@ import { map } from 'rxjs/operators';
 import { Model } from 'src/app/models/model/model';
 import { Store } from '@ngrx/store';
 
+export interface HttpQueryOption {
+  params?: any
+}
 
 export interface HttpShowResponse{
   data: any;
@@ -130,7 +133,7 @@ export class ResourceService<T extends Model> {
               }));
   }
 
-  public query(queryOptions: {} = {}, parent: string = ''): Observable<T[]> {
+  public query(queryOptions: HttpQueryOption = {}, parent: string = ''): Observable<T[]> {
     return this.httpClient
       .get<T[]>(`${this.host}/${parent}${this.resource}`, queryOptions)
       .pipe(map((response: any) => this.convertData(response)))

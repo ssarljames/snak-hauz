@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
 import { HomeRoutingModule } from './home-routing.module';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { IndexComponent } from './index/index.component';
 import { MatCarouselModule } from '@ngmodule/material-carousel';
 import { CarouselComponent } from './carousel/carousel.component';
@@ -21,7 +23,8 @@ import { ShowMealComponent } from './show-meal/show-meal.component';
     CommonModule,
     HomeRoutingModule,
     SharedModule,
-    MatCarouselModule
+    MatCarouselModule,
+    InfiniteScrollModule
   ],
   entryComponents: [
     CarouselComponent,

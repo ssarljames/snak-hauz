@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ThemeService } from 'src/app/core/services/theme/theme.service';
+import { OrderService } from 'src/app/services/order/order.service';
 
 interface Link{
   displayName: string;
@@ -34,11 +35,14 @@ export class GuestPageComponent implements OnInit {
       url: '/orders',
       exact: true
     }
-  ]
+  ];
+
+  orderedMealsCount: number = 0;
 
   constructor(private matDialog: MatDialog,
               private breakpointObserver: BreakpointObserver,
-              private themeService: ThemeService) {
+              private themeService: ThemeService,
+              private orderService: OrderService) {
 
     breakpointObserver.observe(Breakpoints.XSmall).subscribe( result => {
       this.isHandset = result.matches;
@@ -52,7 +56,8 @@ export class GuestPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.orderService.getOrderedMealsCount().subscribe( n => this.orderedMealsCount = n);
+    this.orderService.updateActiveOrderedMeals();
   }
 
   signIn(): void{

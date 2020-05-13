@@ -81,6 +81,10 @@
         width: 100% !important;
         display: table;
     }
+    
+    .badge{
+        font-weight: unset !important;
+    }
 
     .mat-elevation-z6,
     mat-toolbar,
@@ -130,4 +134,13 @@
 
         vertical-align: middle;
         display: inline-flex;
+    }
+
+    .badge{
+        padding: 5px;
+        font-size: 100%;
+    }
+    
+    .price{
+        color: orangered;
     }

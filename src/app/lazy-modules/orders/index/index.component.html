@@ -1,0 +1,63 @@
+
+
+<div class="row">
+    <div class="col-lg-3"></div>
+    <div class="col-lg-6">
+        <h1><mat-icon> fastfood</mat-icon> Orders</h1>
+        <div *ngFor="let order of orders; let i = index">
+            <mat-card>
+                <h3>Order {{ order.order_number }}</h3>
+                {{ order.status_label }}
+                <hr>
+                <div *ngFor="let item of order.main_meals" [class]="{'meal-card': true, 'ml-10': item.pivot.main_order_meal_id}">
+                    <img [src]="item.image_path_url" style="width: 100px; height: 100px" alt="">
+                    <div>
+                        <span class="meal-name">{{ item.name }}</span>
+                        <br>
+                        <span class="price">
+                            {{ item.pivot.current_price != 0 
+                                ? (item.pivot.current_price | currency: 'P ')
+                                : 'FREE' 
+                            }}
+                        </span> &times; {{ item.pivot.quantity }} {{  item.pivot.quantity > 1 ? 'orders' : 'order' }}
+                        <br>
+                        <ng-container *ngIf="item.pivot.addons.length > 0">
+                            Addons <br>
+                            <span *ngFor="let addon of item.pivot.addons" class="badge badge-warning mr-2">{{ addon.name }} ({{ addon.pivot.total_amount > 0 ? '+' + (addon.pivot.total_amount | currency: ' ') : 'FREE' }})</span>
+                        </ng-container>
+                    </div>
+                    <br>
+                    <br>
+                </div>
+
+                <ng-container *ngIf="order.status == 0">
+                    <button 
+                        mat-raised-button 
+                        color="accent" 
+                        (click)="checkoutOrder()"
+                        class="mr-2 mb-2">
+                        
+                        <mat-icon>shopping_cart</mat-icon>
+                        Checkout Order
+                    
+                    </button>
+                    <button 
+                        mat-raised-button 
+                        color="warn" 
+                        (click)="cancelOrder()">
+                        
+                        <mat-icon>remove_shopping_cart</mat-icon>
+                        Cancel Order
+                    </button>
+                </ng-container>
+
+            </mat-card>
+
+            <ng-container *ngIf="i == 0 && orders.length > 1">
+                <br><br>
+                <h2 class="between-lines">Previous Orders</h2>
+                <br><br>
+            </ng-container>
+        </div>
+    </div>
+</div>

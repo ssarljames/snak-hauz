@@ -1,0 +1,43 @@
+<ng-container *ngIf="order">
+    <h2>Summary of Order {{ order.order_number }}</h2>
+    Customer: {{ order.computer_station.name }}
+    <mat-dialog-content>
+        <table class="table table-bordered">
+            <thead>
+                <th>#</th>
+                <th>Name</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Amount</th>
+            </thead>    
+            <tbody>
+                <tr *ngFor="let meal of order.meals; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ meal.name }} <span class="float-right text-muted" *ngIf="meal.pivot.main_order_meal_id">(Addon)</span></td>
+                    <td class="text-center">{{ meal.pivot.quantity }}</td>
+                    <td class="text-right pr-3">{{ meal.pivot.current_price != 0 ? meal.pivot.current_price : 'FREE' }}</td>
+                    <td class="text-right pr-3">{{ meal.pivot.total_amount != 0 ? meal.pivot.total_amount : 'FREE' }}</td>
+                </tr>
+                <tr>
+                    <td colspan="4" class="text-right">Grand Total</td>
+                    <td class="text-right">{{ order.total_amount }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </mat-dialog-content>
+</ng-container>
+<mat-dialog-actions>
+    <br>
+    <app-material-input class="full-width" [control]="customer_cash" label="Enter your cash"></app-material-input>
+    <br>
+    <div class="row full-width">
+        <div class="col-sm-6">
+            <span *ngIf="customer_cash.valid">Your change is {{ (customer_cash.value * 1) - (order.total_amount * 1) | currency: 'P ' }}</span>
+        </div>
+        <div class="col-sm-6 text-right">
+            <button mat-raised-button color="accent" [disabled]="!order" (click)="checkout()">Checkout</button>
+            <button mat-raised-button color="basic" (click)="cancel()">Close</button>
+        </div>
+    </div>
+</mat-dialog-actions>

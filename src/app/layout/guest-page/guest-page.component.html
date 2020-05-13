@@ -15,17 +15,29 @@
             <h4 class="mr-2">Snak Hauz</h4>
             <span class="menu-spacer"></span>
 
-            <a *ngFor="let link of links" [class]="{'d-none': isHandset}" mat-button [routerLink]="link.url" routerLinkActive="_active" [routerLinkActiveOptions]="{ exact: link.exact }">
-          {{ link.displayName }}
-        </a>
+            <a *hideOnMobile class="mr-2" mat-button routerLink="/" routerLinkActive="_active" [routerLinkActiveOptions]="{ exact: true }">
+                <mat-icon>home</mat-icon>
+                Home
+            </a>
+            <a *hideOnMobile mat-button routerLink="/search" routerLinkActive="_active" [routerLinkActiveOptions]="{ exact: true }">
+                <mat-icon>search</mat-icon>
+                Search
+            </a>
 
 
+            <!-- <a mat-button (click)="signIn()">
+                <mat-icon>perm_identity</mat-icon>
+                Sign In
+            </a> -->
             <div class="flex-spacer"></div>
 
-            <!-- <app-theme-picker title="Change Theme"></app-theme-picker> -->
+            <a routerLink="/orders" mat-button (click)="signIn()">
+                <mat-icon>shopping_cart</mat-icon>
+                My Order
+                <span class="badge badge-white" *ngIf="orderedMealsCount > 0">{{ orderedMealsCount }}</span>
+            </a>
 
-
-            <button mat-button [matMenuTriggerFor]="matThemeMenu">
+            <!-- <button mat-button [matMenuTriggerFor]="matThemeMenu">
                 <mat-icon>format_color_fill</mat-icon>
             </button>
             <mat-menu #matThemeMenu="matMenu">
@@ -33,12 +45,8 @@
                     <mat-icon>{{ is_dark_mode ? 'check_box' : 'check_box_outline_blank' }}</mat-icon>
                     <span>Dark Mode</span>
                 </button>
-            </mat-menu>
+            </mat-menu> -->
 
-            <a mat-button (click)="signIn()">
-                <mat-icon>perm_identity</mat-icon>
-                Sign In
-            </a>
         </mat-toolbar-row>
     </mat-toolbar>
 

@@ -2,13 +2,47 @@
 
     @import '~@angular/material/theming';
     @include mat-core();
+
+
+    .between-lines {
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .between-lines:before,
+    .between-lines:after {
+        background-color: #000;
+        content: "";
+        display: inline-block;
+        height: 1px;
+        position: relative;
+        vertical-align: middle;
+        width: 50%;
+    }
+
+    .between-lines:before {
+        right: 0.5em;
+        margin-left: -50%;
+    }
+
+    .between-lines:after {
+        left: 0.5em;
+        margin-right: -50%;
+    }
     
     .dark-theme{
         @import 'dark.scss';
+        .between-lines:before,
+        .between-lines:after {
+            background-color: #fff;
+        }
     }
 
     .default-theme{
         @import 'light.scss';
     }
 
-    
+    .badge-white{
+        background: #fff;
+        color: orangered;
+    }

@@ -1,0 +1,26 @@
+.meal-card{
+    img, div{
+        display: inline-block;
+        vertical-align: top;
+        margin-right: 10px;
+    }
+
+    div{
+        :first-child{
+            font-size: 30px;
+        }
+
+        .meal-name{
+            font-size: 20px;
+        }
+    }
+
+}
+
+.badge{
+    margin-bottom: 5px;
+}
+
+// .ml-10{
+//     margin-left: 100px;
+// }
