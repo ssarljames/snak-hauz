@@ -1,3 +1,3 @@
 export class MealCategory {
-    name
+    name: string;
 }
